@@ -614,28 +614,19 @@ class  adminback
     {
         $projectId = $data['delete_id'];
 
-        $msg = "ลบข้อมูลสําเร็จ";
+        $query = "DELETE FROM `project` WHERE `project`.`pj_id` = '$projectId' ";
+        if (mysqli_query($this->connection, $query)) {
+            $msg = "ลบข้อมูลสําเร็จ";
             return $msg;
-
-        // $query = "DELETE FROM `project` WHERE `project`.`pj_id` = '$projectId' ";
-        // if (mysqli_query($this->connection, $query)) {
-        //     $msg = "ลบข้อมูลสําเร็จ";
-        //     return $msg;
-        // }
+        }
     }
 
-    function project_display_edit($data)
+    function project_display_edit($editId)
     {
-        $projectEditId = $data['edit_id'];
-        
-        $msg = "แก้ไขข้อมูลสําเร็จ";
-            return $msg;
 
-        // $query = "DELETE FROM `project` WHERE `project`.`pj_id` = '$projectId' ";
-        // if (mysqli_query($this->connection, $query)) {
-        //     $msg = "ลบข้อมูลสําเร็จ";
-        //     return $msg;
-        // }
+        $query = "SELECT * FROM `project` WHERE `pj_id` = '$editId' ";
+        $result = mysqli_query($this->connection, $query);
+        return $result;
     }
     function major_list()
     {
@@ -673,9 +664,4 @@ class  adminback
         $result = mysqli_query($this->connection, $query);
         return $result;
     }
-
-   
-
-
-   
 }

@@ -21,14 +21,13 @@ $user_sidebar =  $obj->display_user_profile();
                             echo $userSidebar['user_school'];
                         ?>
                     </b></span>
-                    <!-- <small class="newly-added-features">New</small> -->
                 </li>
                 <li class="<?php echo ($page == 'school-dashboard.php') ? 'active' : ''; ?>">
                     <a href="school-dashboard.php"><i class="la la-building"></i> <span> หน้าหลัก </span></a>
                 </li>
 
-                <li class=" <?php echo ($page == 'sc-projects-list.php') ? 'active' : ''; ?> " >
-                    <a href="sc-projects-list.php"><i class="la la-rocket"></i> <span> ข้อมูลโครงงาน </span></a>
+                <li class="<?php echo ($page == 'sc-projects-list.php') ? 'active' : ''; ?>" >
+                    <a href="sc-projects-list.php" class="noti-dot"><i class="la la-rocket"></i> <span> ข้อมูลโครงงาน </span></a>
                 </li>
 
                 <li class="submenu">

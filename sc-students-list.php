@@ -128,7 +128,7 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
                 <!-- /Page Header -->
-
+            </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
@@ -576,18 +576,6 @@ if (isset($_GET['id'])) {
         });
     </script>
 
-
-    <?php
-    // PHP logic
-    $message = "This is a SweetAlert message!";
-    ?>
-    <!-- Your content -->
-    <h1>SweetAlert Example with PHP</h1>
-    <p>Click the button to see the alert.</p>
-    <button onclick="showAlert()">Show Alert</button>
-
-    <!-- Include SweetAlert JS -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 </body>
 
