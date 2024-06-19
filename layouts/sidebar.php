@@ -27,7 +27,7 @@ $user_sidebar =  $obj->display_user_profile();
                     <a href="school-dashboard.php"><i class="la la-building"></i> <span> หน้าหลัก </span></a>
                 </li>
 
-                <li class="<?php echo ($page == 'sc-projects-list.php') ? 'active' : ''; ?>">
+                <li class="<?php echo ($page == 'sc-projects-list.php') ? 'active' : ''; ?>" >
                     <a href="sc-projects-list.php" class="noti-dot"><i class="la la-rocket"></i> <span> ข้อมูลโครงงาน </span></a>
                 </li>
 
