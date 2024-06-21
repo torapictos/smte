@@ -14,7 +14,7 @@ $(document).ready(function() {
 	});
 	$(".disabled-results").select2();
 	$(".placeholder").select2({
-		placeholder: "Make a Selection",
+		placeholder: "เลือกรายชื่อ...",
 		allowClear: true
 	});
 

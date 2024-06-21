@@ -45,7 +45,7 @@ class  adminback
     function display_user_profile()
     {
         $userId = $_SESSION['user_id'];
-        //echo "<script>alert('$userId')</script>";
+        //echo "<scrip>alert('$userId')</script>";
         $query = "SELECT
             user_id,
             user_firstname,
@@ -550,7 +550,7 @@ class  adminback
         $query = "
         INSERT INTO `project` (`pj_name_th`, `pj_name_en`, `pj_major`, `pj_type`, `pj_student_one`, `pj_student_two`, `pj_student_three`, `pj_advisor_one`, `pj_advisor_two`, `pj_advisor_three`, `pj_abstract`, `pj_school`, `create_at`, `modify_at`)
         VALUES ('$project_name_th', '$project_name_en', '$major', '$major_type', '$first_student', '$second_student', '$third_student', '$first_teacher', '$second_teacher', '$third_teacher', '$newFileName', '$school', NOW(), NOW());
-    ";
+        ";
 
         if (mysqli_query($this->connection, $query)) {
             $msg = "ลงทะเบียนสําเร็จ";
@@ -563,50 +563,110 @@ class  adminback
 
     function project_edit($data)
     {
-        $project_name_th = $data['project_name_th'];
-        $project_name_en = $data['project_name_en'];
-        $major = $data['major'];
-        $major_type = $data['major_type'];
-        $first_student = $data['first_student'];
-        $second_student = $data['second_student'];
-        $third_student = $data['third_student'];
-        $first_teacher = $data['first_teacher'];
-        $second_teacher = $data['second_teacher'];
-        $third_teacher = $data['third_teacher'];
-        $school = $data['project_school'];
+        $project_name_th = $data['project_name_th_edit'];
+        $project_name_en = $data['project_name_en_edit'];
+        $major = $data['project_major_edit'];
+        $major_type = $data['project_major_type_edit'];
+        $first_student = $data['first_student_edit'];
+        $second_student = $data['second_student_edit'];
+        $third_student = $data['third_student_edit'];
+        $first_advisor = $data['first_advisor_edit'];
+        $second_advisor = $data['second_advisor_edit'];
+        $third_advisor = $data['third_advisor_edit'];
+        $abstract = $_FILES['project_abstract_edit']['name'];
+        $projectId = $data['project_id'];
+        $time = date("Y-m-d h:i:s");
 
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (isset($_FILES['project_abstract']) && $_FILES['project_abstract']['error'] == UPLOAD_ERR_OK) {
-                $fileTmpPath = $_FILES['project_abstract']['tmp_name'];
-                $fileName = $_FILES['project_abstract']['name'];
-                $fileNameCmps = explode(".", $fileName);
-                $fileExtension = strtolower(end($fileNameCmps));
+        if (isset($abstract) && ($abstract == "")) {
 
-                // Sanitize file name
-                $newFileName = time() . $fileName . '.' . $fileExtension;
 
-                // Check if the file has the right extension
-                $allowedfileExtensions = array('pdf');
-                if (in_array($fileExtension, $allowedfileExtensions)) {
-                    // Directory in which the uploaded file will be moved
-                    $uploadFileDir = './uploads/';
-                    $dest_path = $uploadFileDir . $newFileName;
+            $query = " UPDATE `project` 
+                        SET 
+                            `pj_name_th`='$project_name_th',
+                            `pj_name_en`='$project_name_en',
+                            `pj_major`='$major',
+                            `pj_type`='$major_type',
+                            `pj_student_one`='$first_student',
+                            `pj_student_two`='$second_student',
+                            `pj_student_three`='$third_student',
+                            `pj_advisor_one`='$first_advisor',
+                            `pj_advisor_two`='$second_advisor',
+                            `pj_advisor_three`='$third_advisor',
+                            `modify_at`='$time' 
+                        WHERE 
+                            `pj_id` = '$projectId'            
+                    ";
 
-                    if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                        echo "กรุณารอสักครู่";
-                    } else {
-                        echo "เกิดข้อผิดพลาดในการอัพโหลดไฟล์";
-                    }
-                } else {
-                    echo "คุณอัพโหลดไฟล์ที่ไม่ถูกต้อง: " . implode(',', $allowedfileExtensions);
-                }
+            if (mysqli_query($this->connection, $query)) {
+                $msg = "ปรับปรุงไฟล์เดิมข้อมูลสําเร็จ";
+                return $msg;
             } else {
-                echo "มีบางอย่างผิดพลาดโปรดติดต่อผู้ดูแลระบบ<br>";
-                echo 'Error:' . $_FILES['project_abstract']['error'];
+                echo 'Error: ' . mysqli_error($this->connection);
+                exit;
             }
         } else {
-            echo "Invalid request method.";
+
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if (isset($_FILES['project_abstract_edit']) && $_FILES['project_abstract_edit']['error'] == UPLOAD_ERR_OK) {
+                    $fileTmpPath = $_FILES['project_abstract_edit']['tmp_name'];
+                    $fileName = $_FILES['project_abstract_edit']['name'];
+                    $fileNameCmps = explode(".", $fileName);
+                    $fileExtension = strtolower(end($fileNameCmps));
+
+                    // Sanitize file name
+                    $newFileName = time() . $fileName . '.' . $fileExtension;
+
+                    // Check if the file has the right extension
+                    $allowedfileExtensions = array('pdf');
+                    if (in_array($fileExtension, $allowedfileExtensions)) {
+                        // Directory in which the uploaded file will be moved
+                        $uploadFileDir = './uploads/';
+                        $dest_path = $uploadFileDir . $newFileName;
+
+                        if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                            echo "กรุณารอสักครู่";
+                        } else {
+                            echo "เกิดข้อผิดพลาดในการอัพโหลดไฟล์";
+                        }
+                    } else {
+                        echo "คุณอัพโหลดไฟล์ที่ไม่ถูกต้อง: " . implode(',', $allowedfileExtensions);
+                    }
+                } else {
+                    echo "มีบางอย่างผิดพลาดโปรดติดต่อผู้ดูแลระบบ<br>";
+                    echo 'Error:' . $_FILES['project_abstract']['error'];
+                }
+            } else {
+                echo "Invalid request method.";
+            }
+
+
+            $query = " UPDATE `project` 
+                        SET 
+                            `pj_name_th`='$project_name_th',
+                            `pj_name_en`='$project_name_en',
+                            `pj_major`='$major',
+                            `pj_type`='$major_type',
+                            `pj_student_one`='$first_student',
+                            `pj_student_two`='$second_student',
+                            `pj_student_three`='$third_student',
+                            `pj_advisor_one`='$first_advisor',
+                            `pj_advisor_two`='$second_advisor',
+                            `pj_advisor_three`='$third_advisor',
+                            `pj_abstract` = '$newFileName',
+                            `modify_at`='$time' 
+                        WHERE 
+                            `pj_id` = '$projectId'            
+                    ";
+
+            if (mysqli_query($this->connection, $query)) {
+                $msg = "ปรับปรุงข้อมูลไฟล์ใหม่สําเร็จ";
+                return $msg;
+            } else {
+                echo 'Error: ' . mysqli_error($this->connection);
+                exit;
+            }
         }
     }
 
@@ -663,5 +723,71 @@ class  adminback
         $query = "SELECT * FROM `project` ORDER BY `create_at` DESC";
         $result = mysqli_query($this->connection, $query);
         return $result;
+    }
+
+
+    // <=============================== Assosiate Teacher Register =============================>
+
+    function teacher_project_register($data)
+    {
+        $prename = $data['teacher_prename'];
+        $firstname = $data['teacher_firstname'];
+        $lastname = $data['teacher_lastname'];
+        $type = $data['teacher_type'];
+        $mobile = $data['teacher_mobile'];
+        $school = $data['teacher_school'];
+
+
+        $query = "INSERT INTO `teacher` (`t_prename`, `t_firstname`, `t_lastname`, `t_type`, `t_mobile`, `t_school`) 
+                                    VALUES ('$prename', '$firstname', '$lastname', '$type', '$mobile', '$school')";
+
+        if (mysqli_query($this->connection, $query)) {
+            $msg = "เพิ่มข้อมูลสําเร็จ";
+            return $msg;
+        }
+    }
+
+    function display_teacher_project_register($school)
+    {
+        $query = "SELECT * FROM `teacher` WHERE `t_school` = '$school' ORDER BY `t_id` DESC";
+
+        if (mysqli_query($this->connection, $query)) {
+            $user_info = mysqli_query($this->connection, $query);
+            return $user_info;
+        }
+    }
+
+    function update_teacher_project($data)
+    {
+        $prename = $data['teacher_prename'];
+        $firstname = $data['teacher_firstname'];
+        $lastname = $data['teacher_lastname'];
+        $type = $data['teacher_type'];
+        $mobile = $data['teacher_mobile'];
+        $school = $data['teacher_school'];
+        $id = $data['teacher_id'];
+        $time = date('Y-m-d H:i:s');
+        $query = "  UPDATE `teacher` 
+                    SET     `t_prename` = '$prename', 
+                            `t_firstname` = '$firstname', 
+                            `t_lastname` = '$lastname',
+                            `t_type` = '$type', 
+                            `t_mobile` = '$mobile', 
+                            `update_at` = '$time' 
+                    WHERE   `t_id` = '$id' ";
+
+        if (mysqli_query($this->connection, $query)) {
+            $msg = "แก้ไขข้อมูลสําเร็จ";
+            return $msg;
+        }
+    }
+
+    function delete_teacher_project($id)
+    {
+        $query = "DELETE FROM `teacher` WHERE `t_id` = '$id' ";
+        if (mysqli_query($this->connection, $query)) {
+            $msg = "ลบข้อมูลสําเร็จ";
+            return $msg;
+        }
     }
 }
