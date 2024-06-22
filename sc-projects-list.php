@@ -12,7 +12,7 @@ $asso_student = $obj->display_associate_student_register($school);
 $major_list = $obj->major_list();
 $major_type = $obj->major_type();
 $student = $obj->select_student($school);
-$teacher = $obj->select_teacher($school);
+$teacher = $obj->display_teacher_project_register($school);
 
 $project = $obj->display_project();
 
@@ -76,59 +76,6 @@ if (isset($_GET['delete_id'])) {
                                 <li class="breadcrumb-item"><a href="admin-dashboard.php">หน้าหลัก</a></li>
                                 <li class="breadcrumb-item active">ข้อมูลโครงงาน</li>
                             </ul>
-                            <p class="text-danger">
-
-                                <?php
-                                if (isset($add_msg)) {
-                                ?>
-                                    <script>
-                                        Swal.fire({
-                                            position: "top-end",
-                                            icon: "success",
-                                            title: "เพิ่มข้อมูลสําเร็จ",
-                                            showConfirmButton: false,
-                                            timer: 1500
-                                        });
-                                    </script>
-
-                                <?php
-                                    header("refresh:0; url=sc-students-list.php");
-                                } ?>
-
-                                <?php
-                                if (isset($update_msg)) {
-                                ?>
-                                    <script>
-                                        Swal.fire({
-                                            position: "top-end",
-                                            icon: "success",
-                                            title: "แก้ไขข้อมูลสําเร็จ",
-                                            showConfirmButton: false,
-                                            timer: 1500
-                                        });
-                                    </script>
-
-                                <?php
-                                    header("refresh:1; url=sc-students-list.php");
-                                } ?>
-
-                                <?php
-                                if (isset($delete_msg)) {
-                                ?>
-                                    <script>
-                                        Swal.fire({
-                                            position: "top-end",
-                                            icon: "success",
-                                            title: "ลบข้อมูลสําเร็จ",
-                                            showConfirmButton: false,
-                                            timer: 1500
-                                        });
-                                    </script>
-
-                                <?php
-                                    header("refresh:1; url=sc-students-list.php");
-                                } ?>
-                            </p>
                         </div>
                         <div class="col-auto float-end ms-auto">
                             <a href="#" class="btn add-btn" data-bs-toggle="modal" data-bs-target="#add_project"><i class="fa-solid fa-plus"></i> เพิ่มข้อมูลโครงงาน</a>
@@ -294,6 +241,7 @@ if (isset($_GET['delete_id'])) {
                                         <div class="input-block mb-3">
                                             <label class="col-form-label">นักเรียนคนที่ 2<span class="text-danger">*หากไม่มีให้เลือก <strong class="text-info">ไม่มี</strong></span></label>
                                             <select name="second_student" class="form-control tagging" multiple="multiple" data-maximum-selection-length="1" required>
+                                                <option>ไม่มี</option>
                                                 <?php foreach ($student as $row_student) { ?>
                                                     <option><?php echo $row_student['asso_prename'] . $row_student['asso_firstname'] . ' ' . $row_student['asso_lastname'] ?></option>
                                                 <?php } ?>
@@ -318,7 +266,7 @@ if (isset($_GET['delete_id'])) {
                                             <label class="col-form-label">ครู/อาจารย์ ที่ปรึกษาคนที่ 1<span class="text-danger">*</span></label>
                                             <select name="first_teacher" class="form-control tagging" multiple="multiple" data-maximum-selection-length="1" placeholder="เลือกสาขาวิชา" required>
                                                 <?php foreach ($teacher as $row_teacher) { ?>
-                                                    <option><?php echo $row_teacher['asso_prename'] . $row_teacher['asso_firstname'] . ' ' . $row_teacher['asso_lastname'] ?></option>
+                                                    <option><?php echo $row_teacher['t_prename'] . $row_teacher['t_firstname'] . ' ' . $row_teacher['t_lastname'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -329,7 +277,7 @@ if (isset($_GET['delete_id'])) {
                                             <select name="second_teacher" class="form-control tagging" multiple="multiple" data-maximum-selection-length="1" placeholder="เลือกสาขาวิชา" required>
                                                 <option>ไม่มี</option>
                                                 <?php foreach ($teacher as $row_teacher) { ?>
-                                                    <option><?php echo $row_teacher['asso_prename'] . $row_teacher['asso_firstname'] . ' ' . $row_teacher['asso_lastname'] ?></option>
+                                                    <option><?php echo $row_teacher['t_prename'] . $row_teacher['t_firstname'] . ' ' . $row_teacher['t_lastname'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -341,7 +289,7 @@ if (isset($_GET['delete_id'])) {
                                             <select name="third_teacher" class="form-control tagging" multiple="multiple" data-maximum-selection-length="1" placeholder="เลือกสาขาวิชา" required>
                                                 <option>ไม่มี</option>
                                                 <?php foreach ($teacher as $row_teacher) { ?>
-                                                    <option><?php echo $row_teacher['asso_prename'] . $row_teacher['asso_firstname'] . ' ' . $row_teacher['asso_lastname'] ?></option>
+                                                    <option><?php echo $row_teacher['t_prename'] . $row_teacher['t_firstname'] . ' ' . $row_teacher['t_lastname'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -503,7 +451,7 @@ if (isset($_GET['delete_id'])) {
                                         <label class="col-form-label">ครู/อาจารย์ ที่ปรึกษาคนที่ 1<span class="text-danger">*</span></label>
                                         <select name="first_advisor_edit" id="first_advisor_edit" class="form-control tagging" multiple="multiple" data-maximum-selection-length="1" required>
                                             <?php foreach ($teacher as $row_teacher) { ?>
-                                                <option><?php echo $row_teacher['asso_prename'] . $row_teacher['asso_firstname'] . ' ' . $row_teacher['asso_lastname'] ?></option>
+                                                <option><?php echo $row_teacher['t_prename'] . $row_teacher['t_firstname'] . ' ' . $row_teacher['t_lastname'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -514,7 +462,7 @@ if (isset($_GET['delete_id'])) {
                                         <select name="second_advisor_edit" id="second_advisor_edit" class="form-control tagging" multiple="multiple" data-maximum-selection-length="1" required>
                                             <option>ไม่มี</option>
                                             <?php foreach ($teacher as $row_teacher) { ?>
-                                                <option><?php echo $row_teacher['asso_prename'] . $row_teacher['asso_firstname'] . ' ' . $row_teacher['asso_lastname'] ?></option>
+                                                <option><?php echo $row_teacher['t_prename'] . $row_teacher['t_firstname'] . ' ' . $row_teacher['t_lastname'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -526,7 +474,7 @@ if (isset($_GET['delete_id'])) {
                                         <select name="third_advisor_edit" id="third_advisor_edit" class="form-control tagging" multiple="multiple" data-maximum-selection-length="1" required>
                                             <option>ไม่มี</option>
                                             <?php foreach ($teacher as $row_teacher) { ?>
-                                                <option><?php echo $row_teacher['asso_prename'] . $row_teacher['asso_firstname'] . ' ' . $row_teacher['asso_lastname'] ?></option>
+                                                <option><?php echo $row_teacher['t_prename'] . $row_teacher['t_firstname'] . ' ' . $row_teacher['t_lastname'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -645,13 +593,13 @@ if (isset($_GET['delete_id'])) {
                     modal.find('.modal-body #project_major_type_edit').val(projectType).change();
                 }
 
-                if(projectFirstStudent){
+                if (projectFirstStudent) {
                     modal.find('.modal-body #first_student_edit').val(projectFirstStudent).change();
                 }
-                if(projectSecondStudent){
+                if (projectSecondStudent) {
                     modal.find('.modal-body #second_student_edit').val(projectSecondStudent).change();
                 }
-                if(projectThirdStudent){
+                if (projectThirdStudent) {
                     modal.find('.modal-body #third_student_edit').val(projectThirdStudent).change();
                 }
 
@@ -659,15 +607,11 @@ if (isset($_GET['delete_id'])) {
                     modal.find('.modal-body #first_advisor_edit').val(projectFirstAdvisor).change();
                 }
                 if (projectSecondAdvisor) {
-                     modal.find('.modal-body #second_advisor_edit').val(projectSecondAdvisor).change();
+                    modal.find('.modal-body #second_advisor_edit').val(projectSecondAdvisor).change();
                 }
                 if (projectThirdAdvisor) {
                     modal.find('.modal-body #third_advisor_edit').val(projectThirdAdvisor).change();
                 }
-
-
-
-
 
             });
         });

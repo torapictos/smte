@@ -15,7 +15,7 @@ if (isset($_POST['add_teacher_project_btn'])) {
 
 if (isset($_POST['edit_teacher_project_btn'])) {
 
-    $edit_msg = $obj->project_edit($_POST);
+    $edit_msg = $obj->update_teacher_project($_POST);
     echo "<script>alert('$edit_msg')</script>";
     echo "<script>window.location='sc-advisor-list.php'</script>";
     
@@ -301,6 +301,7 @@ if (isset($_GET['t_id'])) {
                                     <div class="col-sm-6">
                                         <div class="input-block mb-3">
                                             <input name="teacher_school" id="teacher_school_edit" type="hidden" class="form-control" value="<?php echo $school ?>">
+                                            <input name="teacher_id" id="teacher_id_edit" type="hidden" class="form-control" >
                                         </div>
                                     </div>
 

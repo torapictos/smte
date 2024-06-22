@@ -764,16 +764,14 @@ class  adminback
         $lastname = $data['teacher_lastname'];
         $type = $data['teacher_type'];
         $mobile = $data['teacher_mobile'];
-        $school = $data['teacher_school'];
         $id = $data['teacher_id'];
-        $time = date('Y-m-d H:i:s');
+
         $query = "  UPDATE `teacher` 
                     SET     `t_prename` = '$prename', 
                             `t_firstname` = '$firstname', 
                             `t_lastname` = '$lastname',
                             `t_type` = '$type', 
-                            `t_mobile` = '$mobile', 
-                            `update_at` = '$time' 
+                            `t_mobile` = '$mobile'
                     WHERE   `t_id` = '$id' ";
 
         if (mysqli_query($this->connection, $query)) {
