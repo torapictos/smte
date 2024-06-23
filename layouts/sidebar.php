@@ -25,16 +25,17 @@ $user_sidebar =  $obj->display_user_profile();
                 <li class="<?php echo ($page == 'school-dashboard.php') ? 'active' : ''; ?>">
                     <a href="school-dashboard.php"><i class="la la-building"></i> <span> หน้าหลัก </span></a>
                 </li>
-                
+                <li class="<?php echo ($page == 'sc-std-list.php') ? 'active' : ''; ?>" >
+                <a href="sc-std-list.php" class="<?php echo ($page == 'sc-std-list.php') ? 'active' : ''; ?>"><i class="la la-user"></i><span>รายชื่อนักเรียน</span> </a>
+                </li>
                 <li class="<?php echo ($page == 'sc-advisor-list.php') ? 'active' : ''; ?>" >
                 <a href="sc-advisor-list.php" class="<?php echo ($page == 'sc-advisor-list.php') ? 'active' : ''; ?>"><i class="fa-solid fa-person-chalkboard"></i><span>รายชื่อที่ปรึกษาโครงงาน</span> </a>
-            
                 </li>
                 <li class="<?php echo ($page == 'sc-projects-list.php') ? 'active' : ''; ?>" >
                     <a href="sc-projects-list.php" class="noti-dot"><i class="la la-rocket"></i> <span> ข้อมูลโครงงาน </span></a>
                 </li>
 
-                <li class="submenu">
+                <!-- <li class="submenu">
                     <a href="#" ><i class="la la-user"></i> <span> ข้อมูลรายชื่อผู้เข้าร่วมงาน</span> <span class="menu-arrow"></span></a>
                     <ul>
                         <li><a class="<?php echo ($page == 'sc-students-list.php') ? 'active' : ''; ?>" href="sc-students-list.php">รายชื่อนักเรียน</a></li>
@@ -43,7 +44,7 @@ $user_sidebar =  $obj->display_user_profile();
                         <li><a class="<?php echo ($page == 'sc-retire-list.php') ? 'active' : ''; ?>" href="sc-retire-list.php">รายชื่อครูเกษียณ</a></li>
 
                     </ul>
-                </li>
+                </li> -->
             </ul>
 
         </div>

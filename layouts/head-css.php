@@ -69,7 +69,7 @@ $page = end($link_array);
 	<!-- Lightbox CSS -->
 	<link rel="stylesheet" href="assets/plugins/lightbox/glightbox.min.css">
 <?php } ?>
-<?php if ($page == 'sc-projects-list.php' ||$page == 'sc-advisor-list.php' || $page == 'form-select2.php'|| $page == 'ui-clipboard.php') {   ?>
+<?php if ($page== 'sc-std-list.php' || $page == 'sc-projects-list.php' ||$page == 'sc-advisor-list.php' || $page == 'form-select2.php'|| $page == 'ui-clipboard.php') {   ?>
 	<!-- Select2 CSS -->
 	<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
 <?php } ?>
@@ -112,7 +112,7 @@ $page = end($link_array);
 	<?php } ?>
 <?php }
 if (
-	$page == 'projects-add.php' || $page == 'sc-advisor-list.php' || $page == 'profile.php' ||$page == 'sc-students-list.php' ||$page == 'sc-teacher-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-retire-list.php' 
+	$page == 'projects-add.php' || $page == 'sc-advisor-list.php' || $page = 'sc-std-list.php' || $page == 'profile.php' ||$page == 'sc-students-list.php' ||$page == 'sc-teacher-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-retire-list.php' 
 ) { ?>
 	<!-- Select2 CSS -->
 	<link rel="stylesheet" href="assets/css/select2.min.css">
@@ -137,7 +137,7 @@ if ($page == 'school-dashboard.php') { ?>
 
 
 if (
-	$page == 'sc-projects-list.php' || $page == 'sc-advisor-list.php' || $page == 'associate-dashboard.php'|| $page == 'sc-students-list.php' || $page == 'sc-teacher-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-retire-list.php'
+	$page == 'sc-std-list.php' || $page == 'sc-projects-list.php' || $page == 'sc-advisor-list.php' || $page == 'associate-dashboard.php'|| $page == 'sc-students-list.php' || $page == 'sc-teacher-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-retire-list.php'
 ) { ?>
 	<!-- Datatable CSS -->
 	<link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css">

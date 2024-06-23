@@ -141,7 +141,7 @@ $page = end($link_array);
 
 		<link rel="stylesheet" href="assets/plugins/scrollbar/scroll.min.css">
 	<?php } ?>
-	<?php if ($page == 'sc-projects-list.php' || $page == 'form-select2.php') {   ?>
+	<?php if ($page == 'sc-std-list.php' ||$page == 'sc-projects-list.php' || $page == 'form-select2.php') {   ?>
 		<!-- Select 2 -->
 		<script src="assets/plugins/select2/js/select2.min.js"></script>
 		<script src="assets/plugins/select2/js/custom-select.js"></script>
@@ -162,14 +162,14 @@ $page = end($link_array);
 
 	<?php }
 	if (
-		$page == 'sc-projects-list.php' || $page == 'sc-advisor-list.php' || $page == 'profile.php' || $page == 'sc-students-list.php' || $page == 'sc-teacher-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-retire-list.php'
+		$page == 'sc-std-list.php' ||$page == 'sc-std-list.php' || $page == 'sc-projects-list.php' || $page == 'sc-advisor-list.php' || $page == 'profile.php' || $page == 'sc-students-list.php' || $page == 'sc-teacher-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-retire-list.php'
 	) { ?>
 		<!-- Select2 JS -->
 		<script src="assets/js/select2.min.js"></script>
 
 	<?php }
 	if (
-		$page == 'sc-projects-list.php' || $page == 'sc-teacher-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-retire-list.php'
+		$page == 'sc-std-list.php' || $page == 'sc-projects-list.php' || $page == 'sc-teacher-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-retire-list.php'
 	) { ?>
 		<!-- Datetimepicker JS -->
 		<script src="assets/js/moment.min.js"></script>
@@ -190,7 +190,7 @@ $page = end($link_array);
 
 	<?php }
 	if (
-		$page == 'sc-projects-list.php' || $page == 'sc-advisor-list.php' || $page == 'associate-dashboard.php' || $page == 'sc-students-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-teacher-list.php' || $page == 'sc-retire-list.php'
+		$page == 'sc-std-list.php' ||$page == 'sc-projects-list.php' || $page == 'sc-advisor-list.php' || $page == 'associate-dashboard.php' || $page == 'sc-students-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-teacher-list.php' || $page == 'sc-retire-list.php'
 	) { ?>
 		<!-- Datatable JS -->
 		<script src="assets/js/jquery.dataTables.min.js"></script>
