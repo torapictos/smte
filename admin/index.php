@@ -44,7 +44,7 @@ if (isset($_SESSION['admin_id'])) {
 
 			<div class="account-box">
 				<div class="account-wrapper">
-					<h3 class="account-title">เข้าสู่ระบบ</h3>
+					<h3 class="account-title">เข้าสู่ระบบผู้ดูแลระบบ</h3>
 					<p class="account-subtitle">โครงการห้องเรียนพิเศษ วิทยาศาสตร์ คณิตศาสตร์ เทคโนโลยี และสิ่งแวดล้อม ครั้งที่ 16</p>
 
 					<p class="text-danger account-subtitle" id="logMsg">

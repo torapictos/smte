@@ -137,7 +137,7 @@ if ($page == 'school-dashboard.php') { ?>
 
 
 if (
-	$page == 'admin-dashboard.php' || $page == 'associate-dashboard.php' || $page == 'shirt-dashboard.php'
+	$page == 'project-dashboard.php' || $page == 'admin-dashboard.php' || $page == 'associate-dashboard.php' || $page == 'shirt-dashboard.php'
 ) { ?>
 	<!-- Datatable CSS -->
 	<link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css">

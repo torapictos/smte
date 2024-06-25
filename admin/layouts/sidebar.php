@@ -30,6 +30,16 @@ $obj = new adminback();
                     <a href="shirt-dashboard.php"><i class="fa-solid fa-shirt"></i> <span> สรุปเสื้อผู้ร่วมงาน </span></a>
                 </li>
 
+                <li class="menu-title">
+                    <span><b>
+                    Poject
+                    </b></span>
+                    <small class="newly-added-features">New</small>
+                </li>
+                <li class="<?php echo ($page == 'project-dashboard.php') ? 'active' : ''; ?>">
+                    <a href="project-dashboard.php"><i class="fa fa-sitemap"></i> <span> สรุปรายการโครงงาน </span></a>
+                </li>
+
            
 
                

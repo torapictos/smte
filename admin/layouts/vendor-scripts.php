@@ -192,7 +192,7 @@ $page = end($link_array);
 
 	<?php }
 	if (
-		$page == 'admin-dashboard.php' || $page == 'associate-dashboard.php' || $page='shirt-dashboard.php'
+		$page == 'projedt-dashboard.php' || $page == 'admin-dashboard.php' || $page == 'associate-dashboard.php' || $page='shirt-dashboard.php'
 	) { ?>
 		<!-- Datatable JS -->
 		<script src="assets/js/jquery.dataTables.min.js"></script>
