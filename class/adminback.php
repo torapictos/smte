@@ -717,10 +717,10 @@ class  adminback
         return $result;
     }
 
-    function display_project()
+    function display_project($school)
     {
 
-        $query = "SELECT * FROM `project` ORDER BY `create_at` DESC";
+        $query = "SELECT * FROM `project` WHERE `pj_school` = '$school' ORDER BY `create_at` DESC";
         $result = mysqli_query($this->connection, $query);
         return $result;
     }

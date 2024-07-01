@@ -1,6 +1,5 @@
 <?php include 'layouts/session.php'; ?>
 <?php include 'layouts/head-main.php'; ?>
-
 <?php
 $school = $_SESSION['school'];
 include_once('class/adminback.php');
@@ -19,7 +18,7 @@ if (isset($_POST['edit_teacher_project_btn'])) {
     $edit_msg = $obj->update_teacher_project($_POST);
     echo "<script>alert('$edit_msg')</script>";
     echo "<script>window.location='sc-advisor-list.php'</script>";
-
+    
 }
 
 if (isset($_GET['t_id'])) {
@@ -27,6 +26,7 @@ if (isset($_GET['t_id'])) {
     $delete_msg = $obj->delete_teacher_project($teacherId);
     echo "<script>alert('$delete_msg')</script>";
     echo "<script>window.location='sc-advisor-list.php'</script>";
+   
 }
 
 
@@ -40,11 +40,10 @@ if (isset($_GET['t_id'])) {
     <?php include 'layouts/title-meta.php'; ?>
 
     <?php include 'layouts/head-css.php'; ?>
-    
+
 </head>
 
 <body>
-
 
     <div class="main-wrapper">
         <?php include 'layouts/menu.php'; ?>
@@ -64,10 +63,66 @@ if (isset($_GET['t_id'])) {
                                 <li class="breadcrumb-item"><a href="admin-dashboard.php">หน้าหลัก</a></li>
                                 <li class="breadcrumb-item active">ข้อมูลครูที่ปรึกษา</li>
                             </ul>
+                            <p class="text-danger">
 
+                                <?php
+                                if (isset($add_msg)) {
+                                ?>
+                                    <script>
+                                        Swal.fire({
+                                            position: "top-end",
+                                            icon: "success",
+                                            title: "เพิ่มข้อมูลสําเร็จ",
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+                                       
+                                    </script>
+
+                                <?php
+                                    header("refresh:1; url=sc-teacher-list.php");
+                                } ?>
+
+                                <?php
+                                if (isset($asso_info)) {
+                                ?>
+                                    <script>
+                                         
+                                        Swal.fire({
+                                            position: "top-end",
+                                            icon: "success",
+                                            title: "แก้ไขข้อมูลสําเร็จ",
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+                                       
+                                    </script>
+
+                                <?php
+                                    header("refresh:1; url=sc-teacher-list.php");
+                                } ?>
+
+                                <?php
+                                if (isset($delete_msg)) {
+                                ?>
+                                    <script>
+                                        Swal.fire({
+                                            position: "top-end",
+                                            icon: "success",
+                                            title: "ลบข้อมูลสําเร็จ",
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+                                        
+                                    </script>
+
+                                <?php
+                                    header("refresh:1; url=sc-teacher-list.php");
+                                } ?>
+                            </p>
                         </div>
                         <div class="col-auto float-end ms-auto">
-                            <a href="#"  class="btn add-btn" data-bs-toggle="modal" data-bs-target="#add_teacher"><i class="fa-solid fa-plus"></i> เพิ่มข้อมูลที่ปรึกษา/ที่ปรึกษาพิเศษ</a>
+                            <a href="#" class="btn add-btn" data-bs-toggle="modal" data-bs-target="#add_teacher"><i class="fa-solid fa-plus"></i> เพิ่มข้อมูลที่ปรึกษา/ที่ปรึกษาพิเศษ</a>
                         </div>
                     </div>
                 </div>
@@ -82,7 +137,7 @@ if (isset($_GET['t_id'])) {
                                         <th>ลำดับ</th>
                                         <th>ชื่อ-นามสกุล</th>
                                         <th>ตำแหน่ง</th>
-                                        <th>เบอร์โทรศัพท์</th>
+                                        <th>เบอร์โทรศัพท์</th>                                        
                                         <th class="text-end no-sort">ดำเนินการ</th>
                                     </tr>
                                 </thead>
@@ -94,23 +149,29 @@ if (isset($_GET['t_id'])) {
                                                 <?php echo $i ?>
                                             </td>
                                             <td><?php echo $row['t_prename'] ?><?php echo $row['t_firstname'] ?> <?php echo $row['t_lastname'] ?></td>
-                                            <td><?php echo $row['t_type'] ?></td>
+                                            <td><?php echo $row['t_type'] ?></td>  
                                             <td><?php echo $row['t_mobile'] ?></td>
-
-
+                                            
+                                            
                                             <td class="text-end">
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_teacher" data-teacher-id="<?php echo $row['t_id'] ?>" data-teacher-prename="<?php echo $row['t_prename'] ?>" data-teacher-firstname="<?php echo $row['t_firstname'] ?>" data-teacher-lastname="<?php echo $row['t_lastname'] ?>" data-teacher-mobile="<?php echo $row['t_mobile'] ?>" data-teacher-type="<?php echo $row['t_type'] ?>">
-                                                            <i class="fa-solid fa-pencil m-r-5"></i> แก้ไข</a>
+                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_teacher" 
+                                                                data-teacher-id="<?php echo $row['t_id'] ?>"  
+                                                                data-teacher-prename="<?php echo $row['t_prename'] ?>" 
+                                                                data-teacher-firstname="<?php echo $row['t_firstname'] ?>" 
+                                                                data-teacher-lastname="<?php echo $row['t_lastname'] ?>" 
+                                                                data-teacher-mobile="<?php echo $row['t_mobile'] ?>"                                                     
+                                                                data-teacher-type="<?php echo $row['t_type'] ?>" >
+                                                                <i class="fa-solid fa-pencil m-r-5"></i> แก้ไข</a>
 
-                                                        <a class="dropdown-item" href="?t_id=<?php echo $row['t_id'] ?>"> <i class="fa-regular fa-trash-can m-r-5"></i> ลบ</a>
+                                                        <a class="dropdown-item" href="?t_id=<?php echo $row['t_id'] ?>" > <i class="fa-regular fa-trash-can m-r-5"></i> ลบ</a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
-                                    <?php
+                                    <?php 
                                         $i++;
                                     } ?>
 
@@ -135,11 +196,11 @@ if (isset($_GET['t_id'])) {
                         <div class="modal-body">
                             <form action="" method="post">
                                 <div class="row">
-
+                                    
                                     <div class="col-md-4">
                                         <div class="input-block mb-3">
                                             <label class="col-form-label">คำนำหน้า <span class="text-danger">*</span></label>
-                                            <input type="text" name="teacher_prename" id="teacher_prename" class="form-control" require>
+                                            <input type="text" name="teacher_prename"  id="teacher_prename"  class="form-control"  require>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -164,9 +225,9 @@ if (isset($_GET['t_id'])) {
                                     <div class="col-md-6">
                                         <div class="input-block mb-3">
                                             <label class="col-form-label">ตำแหน่ง <span class="text-danger">*</span></label>
-                                            <input type="text" id="teacher_type" name="teacher_type" class="form-control" value="ครูที่ปรึกษา" readonly require>
+                                            <input type="text" id="teacher_type" name="teacher_type" class="form-control" value="ครูที่ปรึกษา" readonly require>                            
                                         </div>
-                                    </div>
+                                    </div>                                  
 
                                     <div class="col-sm-6">
                                         <div class="input-block mb-3">
@@ -191,7 +252,7 @@ if (isset($_GET['t_id'])) {
             <!-- Edit Employee Modal -->
             <div id="edit_teacher" class="modal custom-modal fade" role="dialog">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
+                <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">แก้ไขข้อมูลครูที่ปรึกษา/ที่ปรึกษาพิเศษ</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -201,11 +262,11 @@ if (isset($_GET['t_id'])) {
                         <div class="modal-body">
                             <form action="" method="post">
                                 <div class="row">
-
+                                
                                     <div class="col-md-4">
                                         <div class="input-block mb-3">
                                             <label class="col-form-label">คำนำหน้า <span class="text-danger">*</span></label>
-                                            <input type="text" id="teacher_prename_edit" name="teacher_prename" class="form-control" require>
+                                            <input type="text" id="teacher_prename_edit" name="teacher_prename" class="form-control"  require>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -231,16 +292,16 @@ if (isset($_GET['t_id'])) {
                                     <div class="col-md-6">
                                         <div class="input-block mb-3">
                                             <label class="col-form-label">ตำแหน่ง <span class="text-danger">*</span></label>
-                                            <input type="text" id="teacher_type_edit" name="teacher_type" class="form-control" value="ครูที่ปรึกษา" readonly require>
+                                            <input type="text" id="teacher_type_edit" name="teacher_type" class="form-control" value="ครูที่ปรึกษา" readonly  require>
                                         </div>
                                     </div>
 
-
+                                   
 
                                     <div class="col-sm-6">
                                         <div class="input-block mb-3">
                                             <input name="teacher_school" id="teacher_school_edit" type="hidden" class="form-control" value="<?php echo $school ?>">
-                                            <input name="teacher_id" id="teacher_id_edit" type="hidden" class="form-control">
+                                            <input name="teacher_id" id="teacher_id_edit" type="hidden" class="form-control" >
                                         </div>
                                     </div>
 
@@ -270,7 +331,7 @@ if (isset($_GET['t_id'])) {
     <!-- JAVASCRIPT -->
     <?php include 'layouts/vendor-scripts.php'; ?>
 
-
+   
     <!-- Check Phone Number Add -->
     <script>
         function validatePhoneNumberTeacher(phoneNumber) {
@@ -368,7 +429,7 @@ if (isset($_GET['t_id'])) {
                 var teacherLastname = button.data('teacher-lastname');
                 var teacherType = button.data('teacher-type');
                 var teacherMobile = button.data('teacher-mobile');
-
+            
                 // อัปเดตค่าของฟอร์มใน modal
                 var modal = $(this);
                 modal.find('.modal-body #teacher_id_edit').val(teacherId);

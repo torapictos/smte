@@ -112,7 +112,7 @@ $page = end($link_array);
 	<?php } ?>
 <?php }
 if (
-	$page == 'profile.php' || $page == 'sc-students-list.php' || $page == 'sc-teacher-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-retire-list.php'
+	$page == 'project-detail.php' || $page == 'profile.php' || $page == 'sc-students-list.php' || $page == 'sc-teacher-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-retire-list.php'
 ) { ?>
 	<!-- Select2 CSS -->
 	<link rel="stylesheet" href="assets/css/select2.min.css">
@@ -137,7 +137,7 @@ if ($page == 'school-dashboard.php') { ?>
 
 
 if (
-	$page == 'project-dashboard.php' || $page == 'admin-dashboard.php' || $page == 'associate-dashboard.php' || $page == 'shirt-dashboard.php'
+	$page == 'project-detail-english.php' || $page == 'project-detail-poster.php' || $page == 'project-detail-oral.php' || $page == 'project-detail.php' || $page == 'project-dashboard.php' || $page == 'admin-dashboard.php' || $page == 'associate-dashboard.php' || $page == 'shirt-dashboard.php'
 ) { ?>
 	<!-- Datatable CSS -->
 	<link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css">

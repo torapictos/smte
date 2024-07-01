@@ -164,7 +164,7 @@ $page = end($link_array);
 
 	<?php }
 	if (
-		$page == 'profile.php' || $page == 'sc-students-list.php' || $page == 'sc-teacher-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-retire-list.php'
+		$page == 'project-detail.php' || $page == 'profile.php' || $page == 'sc-students-list.php' || $page == 'sc-teacher-list.php' || $page == 'sc-boss-list.php' || $page == 'sc-retire-list.php'
 	) { ?>
 		<!-- Select2 JS -->
 		<script src="assets/js/select2.min.js"></script>
@@ -192,7 +192,7 @@ $page = end($link_array);
 
 	<?php }
 	if (
-		$page == 'projedt-dashboard.php' || $page == 'admin-dashboard.php' || $page == 'associate-dashboard.php' || $page='shirt-dashboard.php'
+		$page == 'project-detail-english.php' || $page == 'project-detail-poster.php' || $page == 'project-detail-oral.php' || $page == 'project-detail.php' || $page == 'projedt-dashboard.php' || $page == 'admin-dashboard.php' || $page == 'associate-dashboard.php' || $page='shirt-dashboard.php'
 	) { ?>
 		<!-- Datatable JS -->
 		<script src="assets/js/jquery.dataTables.min.js"></script>

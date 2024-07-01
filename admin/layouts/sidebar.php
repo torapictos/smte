@@ -16,9 +16,9 @@ $obj = new adminback();
             <ul class="sidebar-vertical">
                 <li class="menu-title">
                     <span><b>
-                    Admin
-                    </b></span>
-                    <small class="newly-added-features">New</small>
+                            Admin
+                        </b></span>
+                    
                 </li>
                 <li class="<?php echo ($page == 'admin-dashboard.php') ? 'active' : ''; ?>">
                     <a href="admin-dashboard.php"><i class="la la-home"></i> <span> หน้าหลัก </span></a>
@@ -32,17 +32,38 @@ $obj = new adminback();
 
                 <li class="menu-title">
                     <span><b>
-                    Poject
-                    </b></span>
+                            Poject
+                        </b></span>
                     <small class="newly-added-features">New</small>
                 </li>
                 <li class="<?php echo ($page == 'project-dashboard.php') ? 'active' : ''; ?>">
-                    <a href="project-dashboard.php"><i class="fa fa-sitemap"></i> <span> สรุปรายการโครงงาน </span></a>
+                    <a href="project-dashboard.php"><i class="fa fa-sitemap"></i> <span> สรุปการลงทะเบียนโครงงาน </span></a>
                 </li>
 
-           
 
-               
+                <li class="submenu">
+                        <a href="#" class="noti-dot"><i class="fa fa-rocket"></i> <span> รายละเอียดโครงงาน</span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li><a class="<?php echo ($page == 'project-detail.php')?'active':'';?>" href="project-detail.php">โครงงานทั้งหมด</a></li>
+                            <li><a class="<?php echo ($page == 'project-detail-oral.php')?'active':'';?>" href="project-detail-oral.php">การนำเสนอแบบปากเปล่า</a></li>
+                            <li><a class="<?php echo ($page == 'project-detail-poster.php')?'active':'';?>" href="project-detail-poster.php">การนำเสนอแบบโปสเตอร์</a></li>
+                            <li><a class="<?php echo ($page == 'project-detail-english.php')?'active':'';?>" href="project-detail-english.php">การนำเสนอเป็นภาษาอังกฤษ</a></li>
+                        </ul>
+                    </li>
+                <!-- <li class="submenu">
+                    <a href="#" class="noti-dot"><i class="fa fa-rocket"></i> <span> รายละเอียดโครงงาน</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li class="<?php echo ($page == 'project-detail.php') ? 'active' : ''; ?>">
+                            <a href="project-detail.php"><span> รายละเอียดโครงงาน </span></a>
+                        </li>
+                    </ul>
+
+
+                </li> -->
+
+
+
+
             </ul>
 
         </div>

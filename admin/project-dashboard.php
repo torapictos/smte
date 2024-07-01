@@ -25,6 +25,9 @@ $totalCome = $obj->total_come('เข้าร่วมงาน');
 $totalNotCome = $obj->total_come('ไม่เข้าร่วมงาน');
 
 
+$totalProject = $obj->total_project()
+
+
 
 ?>
 
@@ -70,25 +73,93 @@ $totalNotCome = $obj->total_come('ไม่เข้าร่วมงาน');
                         <li class="breadcrumb-item active"></li>
                     </ul>
                 </div>
-                <div class="col-md-6 col-sm-6 col-lg-12 ">
-                    <div class="card dash-widget">
-                        <div class="card-body">
-                            <span class="dash-widget-icon"><i class="fa-solid fa-sitemap"></i></span>
-                            <div class="dash-widget-info">
-                                <span class="text-center">จำนวนโครงงาน</span>
-                                <h3 class="text-center">
-                                    <?php 
-                                        foreach ($totalCome as $row_totalCome) {
-                                            echo $row_totalCome['count'];
-                                        }
-                                    ?>
-                                </h3>
+                <!-- Total project -->
+                <div class="row">
 
+                    <div class="col-sm-12">
+                        <h3 class="page-title"></h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item active"></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-3 ">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                                <span class="dash-widget-icon"><i class="fa-solid fa-sitemap"></i></span>
+                                <div class="dash-widget-info">
+                                    <span class="text-center">จำนวนโครงงาน</span>
+                                    <h3 class="text-center">
+                                        <?php
+                                        foreach ($totalProject as $row_totalProject) {
+                                            echo $row_totalProject['count'];
+                                        }
+                                        ?>
+                                    </h3>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-3 ">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                                <span class="dash-widget-icon"><i class="fa-solid fa-sitemap"></i></span>
+                                <div class="dash-widget-info">
+                                    <span class="text-center">นำเสนอปากเปล่า</span>
+                                    <h3 class="text-center">
+                                        <?php
+                                        $totalOral = $obj->total_all_type('การนำเสนอแบบปากเปล่า');
+                                        foreach ($totalOral as $row_totalOral) {
+                                            echo $row_totalOral['count'];
+                                        }
+                                        ?>
+                                    </h3>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-3 ">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                                <span class="dash-widget-icon"><i class="fa-solid fa-sitemap"></i></span>
+                                <div class="dash-widget-info">
+                                    <span class="text-center">นำเสนอแบบโปสเตอร์</span>
+                                    <h3 class="text-center">
+                                        <?php
+                                        $totalPoster = $obj->total_all_type('การนำเสนอแบบโปสเตอร์');
+                                        foreach ($totalPoster as $row_totalPoster) {
+                                            echo $row_totalPoster['count'];
+                                        }
+                                        ?>
+                                    </h3>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-3 ">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                                <span class="dash-widget-icon"><i class="fa-solid fa-sitemap"></i></span>
+                                <div class="dash-widget-info">
+                                    <span class="text-center">นำเสนอภาษาอังกฤษ</span>
+                                    <h3 class="text-center">
+                                        <?php
+                                        $totalEnglish = $obj->total_all_type('การนำเสนอเป็นภาษาอังกฤษ');
+                                        foreach ($totalEnglish as $row_totalEnglish) {
+                                            echo $row_totalEnglish['count'];
+                                        }
+                                        ?>
+                                    </h3>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+                <!-- Total project -->
+
 
 
 
@@ -111,7 +182,7 @@ $totalNotCome = $obj->total_come('ไม่เข้าร่วมงาน');
                                     <tr>
                                         <th rowspan="2" class="text-center">ลําดับ</th>
                                         <th rowspan="2" class="text-center">โรงเรียน</th>
-                                        
+
                                     </tr>
                                     <tr>
 
@@ -119,7 +190,7 @@ $totalNotCome = $obj->total_come('ไม่เข้าร่วมงาน');
                                         <th class="text-center">นำเสอแบบปากเปล่า</th>
                                         <th class="text-center">นำเสนอแบบโปสเตอร์</th>
                                         <th class="text-center">นำเสนอเป็นภาษอังกฤษ</th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -131,9 +202,9 @@ $totalNotCome = $obj->total_come('ไม่เข้าร่วมงาน');
                                         <!-- Total project -->
                                         <td class="text-center">
                                             <?php
-                                            $totalStudentCome = $obj->total_count_come('นักเรียน', 'เข้าร่วมงาน');
-                                            foreach ($totalStudentCome as $row_totalStudentCome) {
-                                                echo $row_totalStudentCome['count'];
+                                            $totalAllProjectSChool = $obj->total_project();
+                                            foreach ($totalAllProjectSChool as $row_totalAllProjectSChool) {
+                                                echo $row_totalAllProjectSChool['count'];
                                             }
                                             ?>
                                         </td>
@@ -141,59 +212,64 @@ $totalNotCome = $obj->total_come('ไม่เข้าร่วมงาน');
                                         <!-- Total oral -->
                                         <td class="text-center">
                                             <?php
-                                            $totalStudentNotCome = $obj->total_count_not_come('นักเรียน', 'ไม่เข้าร่วมงาน');
-                                            foreach ($totalStudentNotCome as $row_totalStudentNotCome) {
-                                                echo $row_totalStudentNotCome['count'];
+                                            $totalOral = $obj->total_all_type('การนำเสนอแบบปากเปล่า');
+                                            foreach ($totalOral as $row_totalOral) {
+                                                echo $row_totalOral['count'];
                                             }
                                             ?>
                                         </td>
                                         <!-- Total poster -->
                                         <td class="text-center">
                                             <?php
-                                            $totalTeacherCome = $obj->total_count_come('ครูที่ปรึกษา', 'เข้าร่วมงาน');
-                                            foreach ($totalTeacherCome as $row_totalTeacherCome) {
-                                                echo $row_totalTeacherCome['count'];
+                                            $totalPoster = $obj->total_all_type('การนำเสนอแบบโปสเตอร์');
+                                            foreach ($totalPoster as $row_totalPoster) {
+                                                echo $row_totalPoster['count'];
                                             }
                                             ?>
-                                        </td>                                        
+                                        </td>
 
                                         <!-- Total english -->
                                         <td class="text-center">
                                             <?php
-                                            $totalBossCome = $obj->total_count_come('ผู้บริหาร', 'เข้าร่วมงาน');
-                                            foreach ($totalBossCome as $row_totalBossCome) {
-                                                echo $row_totalBossCome['count'];
+                                            $totalEnglish = $obj->total_all_type('การนำเสนอเป็นภาษาอังกฤษ');
+                                            foreach ($totalEnglish as $row_totalEnglish) {
+                                                echo $row_totalEnglish['count'];
                                             }
                                             ?>
                                         </td>
-                                        
+
                                     </tr>
                                 </tfoot>
                                 <tbody>
                                     <?php $i = 1;
                                     foreach ($school_name as $row_school) { ?>
                                         <tr>
+                                            <!-- Order -->
                                             <td>
                                                 <?php echo $i ?>
                                             </td>
+
+                                            <!-- School name -->
                                             <td><?php echo $row_school['user_school'] ?></td>
-                                            <!-- Display total -->
+
+
+                                            <!-- Display total project for each school -->
                                             <td class="text-center">
                                                 <?php
 
                                                 if ($row_school['user_school'] == 'โรงเรียนเฉลิมพระเกียรติฯ หนองบัวลำภู') {
                                                     echo 0;
                                                 } else {
-                                                    $student_count = $obj->display_student_count($row_school['user_school']);
-                                                    foreach ($student_count as $row_student) {
-                                                        echo $row_student['student_count'];
+                                                    $totalProjectSchool = $obj->total_all_project_school($row_school['user_school']);
+                                                    foreach ($totalProjectSchool as $row_totalProjectSchool) {
+                                                        echo $row_totalProjectSchool['count'];
                                                     }
                                                 }
 
 
                                                 ?>
                                             </td>
-                                           
+
                                             <!-- /Display total -->
 
                                             <!-- Display oral -->
@@ -202,14 +278,14 @@ $totalNotCome = $obj->total_come('ไม่เข้าร่วมงาน');
                                                 if ($row_school['user_school'] == 'โรงเรียนเฉลิมพระเกียรติฯ หนองบัวลำภู') {
                                                     echo 0;
                                                 } else {
-                                                    $totalTeacherComeSchool = $obj->total_count_come_school('ครูที่ปรึกษา', 'เข้าร่วมงาน', $row_school['user_school']);
-                                                    foreach ($totalTeacherComeSchool as $row_totalTeacherComeSchool) {
-                                                        echo $row_totalTeacherComeSchool['count'];
+                                                    $totalOralSchool = $obj->total_all_Oral($row_school['user_school']);
+                                                    foreach ($totalOralSchool as $row_totalOralSchool) {
+                                                        echo $row_totalOralSchool['count'];
                                                     }
                                                 }
                                                 ?>
                                             </td>
-                                            
+
                                             <!-- /Display oral -->
 
                                             <!-- Display poster -->
@@ -219,16 +295,16 @@ $totalNotCome = $obj->total_come('ไม่เข้าร่วมงาน');
                                                 if ($row_school['user_school'] == 'โรงเรียนเฉลิมพระเกียรติฯ หนองบัวลำภู') {
                                                     echo 0;
                                                 } else {
-                                                    $totalBossComeSchool = $obj->total_count_come_school('ผู้บริหาร', 'เข้าร่วมงาน', $row_school['user_school']);
-                                                    foreach ($totalBossComeSchool as $row_totalBossComeSchool) {
-                                                        echo $row_totalBossComeSchool['count'];
+                                                    $totalPosterSchool = $obj->total_all_poster($row_school['user_school']);
+                                                    foreach ($totalPosterSchool as $row_totalPosterSchool) {
+                                                        echo $row_totalPosterSchool['count'];
                                                     }
                                                 }
 
 
                                                 ?>
                                             </td>
-                                            
+
                                             <!-- /Display oral -->
 
                                             <!-- Display english -->
@@ -238,15 +314,15 @@ $totalNotCome = $obj->total_come('ไม่เข้าร่วมงาน');
                                                 if ($row_school['user_school'] == 'โรงเรียนเฉลิมพระเกียรติฯ หนองบัวลำภู') {
                                                     echo 0;
                                                 } else {
-                                                    $retireCountComeSchool = $obj->total_count_come_school('ครูผู้เกษียณ', 'เข้าร่วมงาน', $row_school['user_school']);
-                                                    foreach ($retireCountComeSchool as $row_retireCountComeSchool) {
-                                                        echo $row_retireCountComeSchool['count'];
+                                                    $totalEnglishSchool = $obj->total_all_english($row_school['user_school']);
+                                                    foreach ($totalEnglishSchool as $row_totalEnglishSchool) {
+                                                        echo $row_totalEnglishSchool['count'];
                                                     }
                                                 }
 
                                                 ?>
                                             </td>
-                                            
+
                                             <!-- /Display english -->
 
 

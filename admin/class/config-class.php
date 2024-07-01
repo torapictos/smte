@@ -1,7 +1,7 @@
 <?php 
 
 $dbhost = "localhost";
-$dbuser = "root";
-$dbpass = "";
-$dbname = "smte";
+$dbuser = "regsmte_site";
+$dbpass = "TmGWJhwX5eESfX5e4mEk";
+$dbname = "regsmte_site";
 ?>

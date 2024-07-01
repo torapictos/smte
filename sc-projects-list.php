@@ -14,7 +14,7 @@ $major_type = $obj->major_type();
 $student = $obj->select_student($school);
 $teacher = $obj->display_teacher_project_register($school);
 
-$project = $obj->display_project();
+$project = $obj->display_project($school);
 
 
 if (isset($_POST['add_project_btn'])) {
@@ -427,6 +427,7 @@ if (isset($_GET['delete_id'])) {
                                     <div class="input-block mb-3">
                                         <label class="col-form-label">นักเรียนคนที่ 2<span class="text-danger">*หากไม่มีให้เลือก <strong class="text-info">ไม่มี</strong></span></label>
                                         <select name="second_student_edit" id="second_student_edit" class="form-control tagging" multiple="multiple" data-maximum-selection-length="1" required>
+                                            <option>ไม่มี</option>
                                             <?php foreach ($student as $row_student) { ?>
                                                 <option><?php echo $row_student['asso_prename'] . $row_student['asso_firstname'] . ' ' . $row_student['asso_lastname'] ?></option>
                                             <?php } ?>

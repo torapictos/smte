@@ -7,6 +7,7 @@
     <?php include 'layouts/head-css.php'; ?>
 </head>
 
+<?php include 'layouts/body.php'; ?>
 <?php include 'class/adminback.php'; ?>
 
 

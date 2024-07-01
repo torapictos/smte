@@ -158,9 +158,6 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-            
-            
-        
         }
     }
 
@@ -173,9 +170,6 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-            
-            
-        
         }
     }
 
@@ -188,9 +182,6 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-            
-            
-        
         }
     }
 
@@ -203,9 +194,6 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-            
-            
-        
         }
     }
 
@@ -218,13 +206,11 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-            
-            
-        
         }
     }
 
-    function total_student(){
+    function total_student()
+    {
 
         $query = "SELECT COUNT(asso_id) AS count
                     FROM associate
@@ -233,13 +219,11 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-            
-            
-        
         }
     }
 
-    function total_student_school($school){
+    function total_student_school($school)
+    {
 
         $query = "SELECT COUNT(asso_id) AS count
                     FROM associate
@@ -248,13 +232,11 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-            
-            
-        
         }
     }
 
-    function total_count_school($type,$school){
+    function total_count_school($type, $school)
+    {
 
         $query = "SELECT COUNT(asso_id) AS count
                     FROM associate
@@ -263,12 +245,10 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-            
-            
-        
         }
     }
-    function total_school_shirt($type,$school){
+    function total_school_shirt($type, $school)
+    {
 
         $query = "SELECT COUNT(asso_id) AS count
                     FROM associate
@@ -277,13 +257,11 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-            
-            
-        
         }
     }
 
-    function total_school_not_shirt($type,$school){
+    function total_school_not_shirt($type, $school)
+    {
 
         $query = "SELECT COUNT(asso_id) AS count
                     FROM associate
@@ -292,13 +270,11 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-            
-            
-        
         }
     }
 
-    function total_associate($type){
+    function total_associate($type)
+    {
 
         $query = "SELECT COUNT(asso_id) AS count
                     FROM associate
@@ -307,11 +283,11 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-        
         }
     }
 
-    function total_associate_shirt($type,$shirt){
+    function total_associate_shirt($type, $shirt)
+    {
 
         $query = "SELECT COUNT(asso_id) AS count
                     FROM associate
@@ -320,11 +296,11 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-        
         }
     }
 
-    function total_associate_not_shirt($type,$shirt){
+    function total_associate_not_shirt($type, $shirt)
+    {
 
         $query = "SELECT COUNT(asso_id) AS count
                     FROM associate
@@ -333,8 +309,133 @@ class  adminback
         if (mysqli_query($this->connection, $query)) {
             $user_info = mysqli_query($this->connection, $query);
             return $user_info;
-        
         }
     }
+
+    // ==================== Project Dashboard Count ==================================
+
+    function total_project()
+    {
+        $query = "SELECT COUNT(pj_id) AS count
+                    FROM project WHERE pj_school != ''
+                 ";
+        if (mysqli_query($this->connection, $query)) {
+            $user_info = mysqli_query($this->connection, $query);
+            return $user_info;
+        }
+    }
+
+    function total_project_school($school)
+    {
+        $query = "SELECT COUNT(pj_id) AS count
+                    FROM project
+                    WHERE pj_school = '$school'
+                    AND pj_school != ''
+                 ";
+        if (mysqli_query($this->connection, $query)) {
+            $user_info = mysqli_query($this->connection, $query);
+            return $user_info;
+        }
+    }
+
+    function total_all_project_school($school)
+    {
+
+        $query = "SELECT COUNT(pj_id) AS count
+                    FROM project
+                    WHERE pj_school = '$school'
+                    AND pj_school != ''
+                 ";
+        if (mysqli_query($this->connection, $query)) {
+            $user_info = mysqli_query($this->connection, $query);
+            return $user_info;
+        }
+    }
+
+    function total_all_type($type)
+    {
+
+        $query = "SELECT COUNT(pj_id) AS count
+                    FROM project
+                    WHERE pj_type = '$type'
+                    AND pj_school != ''
+                 ";
+        if (mysqli_query($this->connection, $query)) {
+            $user_info = mysqli_query($this->connection, $query);
+            return $user_info;
+        }
+    }
+
+    function total_all_Oral($school)
+    {
+
+        $query = "SELECT COUNT(pj_id) AS count
+                    FROM project
+                    WHERE pj_type = 'การนำเสนอแบบปากเปล่า' 
+                    AND pj_school = '$school'
+                    AND pj_school != ''
+                 ";
+
+        if (mysqli_query($this->connection, $query)) {
+            $user_info = mysqli_query($this->connection, $query);
+            return $user_info;
+        }
+    }
+
+    function total_all_poster($school)
+    {
+
+        $query = "SELECT COUNT(pj_id) AS count
+                    FROM project
+                    WHERE pj_type = 'การนำเสนอแบบโปสเตอร์' 
+                    AND pj_school = '$school'
+                    AND pj_school != ''
+                 ";
+
+        if (mysqli_query($this->connection, $query)) {
+            $user_info = mysqli_query($this->connection, $query);
+            return $user_info;
+        }
+    }
+
+    function total_all_english($school)
+    {
+
+        $query = "SELECT COUNT(pj_id) AS count
+                    FROM project
+                    WHERE pj_type = 'การนำเสนอเป็นภาษาอังกฤษ' 
+                    AND pj_school = '$school'
+                    AND pj_school != ''
+                 ";
+
+        if (mysqli_query($this->connection, $query)) {
+            $user_info = mysqli_query($this->connection, $query);
+            return $user_info;
+        }
+    }
+
+    // ============================= Project_dashboard_Detail ===========================
+    function total_all_detail_project()
+    {
+        $query = "SELECT * FROM project WHERE pj_school != ''
+                    order by pj_school asc
+                 ";
+        if (mysqli_query($this->connection, $query)) {
+            $user_info = mysqli_query($this->connection, $query);
+            return $user_info;
+        }
+    }
+
+    function total_all_detail_project_type($type)
+    {
+        $query = "SELECT * FROM project WHERE pj_type = '$type' AND pj_school != ''
+                    order by pj_school asc
+                 ";
+        if (mysqli_query($this->connection, $query)) {
+            $user_info = mysqli_query($this->connection, $query);
+            return $user_info;
+        }
+    }
+
 
 }
